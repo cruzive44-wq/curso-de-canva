@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso: Potenciar tus Campañas de Marketing con Canva</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canva-purple: #7C3AED;
+    --canva-blue: #3B82F6;
+    --canva-teal: #0FA086;
+    --canva-pink: #EC4899;
+    --canva-amber: #F59E0B;
+    --canva-red: #EF4444;
+    --bg: #F8F7FF;
+    --surface: #FFFFFF;
+    --text-primary: #1A1433;
+    --text-secondary: #6B6A7A;
+    --border: #E5E3F5;
+    --accent-light: #EDE9FE;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 40%, #2563EB 100%);
+    padding: 80px 40px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(236,72,153,0.2);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.25);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 em { color: #FDE68A; font-style: italic; }
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat {
+    text-align: center;
+    color: #fff;
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    line-height: 1;
+  }
+  .hero-stat span { font-size: 13px; opacity: 0.7; margin-top: 4px; display: block; }
+
+  /* NAVIGATION */
+  .course-nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .course-nav::-webkit-scrollbar { display: none; }
+  .nav-item {
+    padding: 16px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-item:hover, .nav-item.active { color: var(--canva-purple); border-bottom-color: var(--canva-purple); }
+
+  /* MAIN LAYOUT */
+  .container { max-width: 960px; margin: 0 auto; padding: 60px 40px; }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--canva-purple);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* MODULE CARDS */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .module-card {
+    background: var(--surface);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .module-card:hover { background: #FAFAFE; }
+  .module-number {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .m1 .module-number { background: #EDE9FE; color: #5B21B6; }
+  .m2 .module-number { background: #DBEAFE; color: #1D4ED8; }
+  .m3 .module-number { background: #D1FAE5; color: #065F46; }
+  .m4 .module-number { background: #FCE7F3; color: #9D174D; }
+  .m5 .module-number { background: #FEF3C7; color: #92400E; }
+  .m6 .module-number { background: #FEE2E2; color: #991B1B; }
+
+  .module-content h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .module-meta {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .meta-tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .module-content p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .lesson-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .lesson-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-primary);
+  }
+  .lesson-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .m1 .lesson-dot { background: var(--canva-purple); }
+  .m2 .lesson-dot { background: var(--canva-blue); }
+  .m3 .lesson-dot { background: var(--canva-teal); }
+  .m4 .lesson-dot { background: var(--canva-pink); }
+  .m5 .lesson-dot { background: var(--canva-amber); }
+  .m6 .lesson-dot { background: var(--canva-red); }
+
+  /* MODULE PREVIEW IMAGE */
+  .module-preview {
+    margin-top: 24px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .module-preview img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .module-preview:hover img { transform: scale(1.03); }
+  .preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,10,50,0.7) 0%, transparent 55%);
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+
+  /* EXAMPLE LINK BUTTON */
+  .example-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .example-link svg {
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+  }
+  .example-link:hover { transform: translateY(-1px); }
+
+  .m1 .example-link { color: #5B21B6; border-color: #C4B5FD; background: #F5F3FF; }
+  .m1 .example-link:hover { background: #EDE9FE; border-color: #7C3AED; }
+  .m2 .example-link { color: #1D4ED8; border-color: #BFDBFE; background: #EFF6FF; }
+  .m2 .example-link:hover { background: #DBEAFE; border-color: #3B82F6; }
+  .m3 .example-link { color: #065F46; border-color: #6EE7B7; background: #ECFDF5; }
+  .m3 .example-link:hover { background: #D1FAE5; border-color: #0FA086; }
+  .m4 .example-link { color: #9D174D; border-color: #FBCFE8; background: #FDF2F8; }
+  .m4 .example-link:hover { background: #FCE7F3; border-color: #EC4899; }
+  .m5 .example-link { color: #92400E; border-color: #FDE68A; background: #FFFBEB; }
+  .m5 .example-link:hover { background: #FEF3C7; border-color: #F59E0B; }
+  .m6 .example-link { color: #991B1B; border-color: #FECACA; background: #FFF5F5; }
+  .m6 .example-link:hover { background: #FEE2E2; border-color: #EF4444; }
+
+  /* PREVIEW CAPTION */
+  .preview-caption {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.5px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  /* COMPETENCIES */
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .competency-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+  .competency-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .competency-card h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .competency-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* TOOLS SECTION */
+  .tools-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px;
+    margin: 60px 0;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .tool-pill {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .tool-pill .tool-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5B21B6;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .tool-pill .tool-type {
+    font-size: 11px;
+    color: #7C6FAB;
+  }
+
+  /* METHODOLOGY */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+  .method-step {
+    background: var(--surface);
+    padding: 36px 28px;
+  }
+  .method-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    line-height: 1;
+    color: #EDE9FE;
+    margin-bottom: 16px;
+  }
+  .method-step h4 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .method-step p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* OUTCOMES */
+  .outcomes-section {
+    background: linear-gradient(135deg, #4C1D95, #7C3AED);
+    border-radius: 24px;
+    padding: 60px 48px;
+    color: #fff;
+    margin: 60px 0;
+  }
+  .outcomes-section .section-label { color: #FDE68A; }
+  .outcomes-section .section-title { color: #fff; }
+  .outcomes-section .section-desc { color: rgba(255,255,255,0.75); margin-bottom: 40px; }
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .outcome-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .outcome-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(253,230,138,0.2);
+    border: 1px solid rgba(253,230,138,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FDE68A;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .outcome-item p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+  /* AUDIENCE */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .audience-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .audience-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .audience-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .audience-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* FOOTER */
+  .course-footer {
+    background: var(--text-primary);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 40px;
+    font-size: 13px;
+  }
+  .course-footer strong { color: #fff; }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 60px 0;
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 60px 24px 80px; }
+    .container { padding: 40px 24px; }
+    .module-card { grid-template-columns: 1fr; }
+    .tools-strip { padding: 32px 24px; }
+    .outcomes-section { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Canva Design School · Edición LATAM</div>
+  <h1>Potencia tus campañas<br>de marketing con <em>Canva</em></h1>
+  <p>Un curso completo para especialistas en marketing que quieren dominar las herramientas más poderosas de Canva y llevar sus campañas al siguiente nivel.</p>
+  <a href="https://www.canva.com/designschool/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#fff;color:#4C1D95;font-weight:700;font-size:15px;padding:14px 32px;border-radius:100px;text-decoration:none;margin-bottom:48px;position:relative;z-index:1;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 20px rgba(0,0,0,0.15);" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.15)'">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+    Ir a Canva Design School
+  </a>
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>6</strong><span>Módulos</span></div>
+    <div class="hero-stat"><strong>18</strong><span>Lecciones</span></div>
+    <div class="hero-stat"><strong>~5 h</strong><span>Duración total</span></div>
+    <div class="hero-stat"><strong>12+</strong><span>Herramientas de IA</span></div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="course-nav">
+  <a class="nav-item active" href="#modulos">Módulos</a>
+  <a class="nav-item" href="#herramientas">Herramientas</a>
+  <a class="nav-item" href="#metodologia">Metodología</a>
+  <a class="nav-item" href="#resultados">Resultados</a>
+  <a class="nav-item" href="#audiencia">Para quién</a>
+</nav>
+
+<!-- ABOUT -->
+<section class="container">
+  <div class="section-label">Acerca del curso</div>
+  <h2 class="section-title">De la idea al impacto,<br>todo en Canva</h2>
+  <p class="section-desc">Este curso te guía por cada herramienta clave de Canva para marketing: desde crear videos con IA hasta diseñar correos electrónicos, gestionar el Kit de Marca, planificar publicaciones y medir resultados con datos en tiempo real. Aprenderás haciendo, con ejemplos reales y actividades prácticas.</p>
+
+  <div class="competencies-grid">
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#EDE9FE;">🎬</div>
+      <h4>Producción de video con IA</h4>
+      <p>Genera videos promocionales, añade subtítulos y edita con Timeline 2.0 sin experiencia previa en edición.</p>
+    </div>
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#DBEAFE;">✉️</div>
+      <h4>Email marketing visual</h4>
+      <p>Diseña correos HTML adaptables con Canva, sin necesidad de código. Integra con MailChimp y más.</p>
+    </div>
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#D1FAE5;">🎨</div>
+      <h4>Kit de Marca completo</h4>
+      <p>Configura y gestiona tu identidad visual para que todo tu equipo cree contenido consistente.</p>
+    </div>
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#FCE7F3;">📅</div>
+      <h4>Planificación multicanal</h4>
+      <p>Programa publicaciones en redes sociales, sincroniza canales y aprueba flujos en equipo.</p>
+    </div>
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#FEF3C7;">📊</div>
+      <h4>Datos e informes en vivo</h4>
+      <p>Conecta Google Sheets, Analytics y Salesforce para paneles de campaña que se actualizan solos.</p>
+    </div>
+    <div class="competency-card">
+      <div class="competency-icon" style="background:#FEE2E2;">🚀</div>
+      <h4>Campañas listas para lanzar</h4>
+      <p>Aplica Redimensión Mágica para adaptar un diseño a todos los formatos de tu campaña.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" style="margin: 0;">
+
+<!-- MODULES -->
+<section class="container" id="modulos">
+  <div class="section-label">Contenido del curso</div>
+  <h2 class="section-title">6 módulos para dominar<br>tu campaña de principio a fin</h2>
+  <p class="section-desc">Cada módulo combina teoría, demostración y práctica. Las actividades están diseñadas para que puedas aplicar lo aprendido inmediatamente en tu trabajo.</p>
+
+  <div class="modules-grid">
+
+    <!-- Módulo 1 -->
+    <div class="module-card m1">
+      <div class="module-number">01</div>
+      <div class="module-content">
+        <h3>Fundamentos: Kit de Marca y Brand System</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 45 min</span>
+          <span class="meta-tag">📐 Configuración</span>
+          <span class="meta-tag">🎯 Esencial</span>
+        </div>
+        <p>Antes de crear cualquier campaña, necesitas una base sólida. En este módulo aprenderás a configurar tu Kit de Marca en minutos para que todo el contenido que generes sea automáticamente coherente con tu identidad visual.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>¿Qué es el Kit de Marca y por qué es el punto de partida?</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Explorar el Creador de Kits: detección automática de colores, fuentes y voz</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Personalizar categorías de recursos (logos, fotos, gráficos, pautas)</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Configurar las pautas visuales como banners de referencia</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Actividad: Aplicar el Kit de Marca en Canva IA con una instrucción propia</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" alt="Diseño de identidad de marca con paleta de colores y tipografías" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Kit de Marca en acción</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/brand/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Explorar Kit de Marca en Canva
+        </a>
+      </div>
+    </div>
+
+    <!-- Módulo 2 -->
+    <div class="module-card m2">
+      <div class="module-number">02</div>
+      <div class="module-content">
+        <h3>Creación de video con inteligencia artificial</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 60 min</span>
+          <span class="meta-tag">🎬 Video</span>
+          <span class="meta-tag">🤖 IA avanzada</span>
+        </div>
+        <p>El video es el formato que genera más interacción. Con Canva IA y Timeline 2.0 puedes pasar de una idea a un video de campaña pulido sin necesidad de material filmado, en una fracción del tiempo tradicional.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>Canva IA para video: instrucciones, filtros y estilos de generación</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Timeline 2.0: edición multicapa, textos animados, transiciones</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Agregar música con IA: buscar, ajustar tiempos y fundidos</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Subtítulos automáticos: generar, editar y adaptar a la marca</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Video Mágico desde el teléfono: crear contenido de detrás de cámaras</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Actividad: crear un video promocional de producto desde cero con IA</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80" alt="Edición de video en línea de tiempo" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Timeline 2.0 en Canva</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/create/videos/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Crear videos con Canva IA
+        </a>
+      </div>
+    </div>
+
+    <!-- Módulo 3 -->
+    <div class="module-card m3">
+      <div class="module-number">03</div>
+      <div class="module-content">
+        <h3>Diseño y envío de correos electrónicos</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 50 min</span>
+          <span class="meta-tag">✉️ Email marketing</span>
+          <span class="meta-tag">💡 Sin código</span>
+        </div>
+        <p>El correo electrónico sigue siendo una de las herramientas de marketing más efectivas. Canva elimina la fricción entre diseño y envío: diseña, escribe con IA, previsualizá y exporta en HTML adaptable sin tocar una sola línea de código.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>Plantillas de correo profesional: estructura y mejores prácticas</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Layouts con columnas, saltos de página y botones de llamado a la acción</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Texto Mágico: generar asuntos, cuerpos de texto y CTAs</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Quitafondos, Borrador Mágico y Contenido Mágico en correos</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Enviar correos de prueba, exportar HTML e integrar con MailChimp</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Traducir el correo a otro idioma con Canva IA</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Actividad: diseñar y exportar un correo de campaña completo</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80" alt="Diseño de correo electrónico en pantalla" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Correo de campaña en Canva</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/create/email-newsletters/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver plantillas de correo en Canva
+        </a>
+      </div>
+    </div>
+
+    <!-- Módulo 4 -->
+    <div class="module-card m4">
+      <div class="module-number">04</div>
+      <div class="module-content">
+        <h3>De un diseño a una minicampaña multicanal</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 40 min</span>
+          <span class="meta-tag">📱 Multicanal</span>
+          <span class="meta-tag">✂️ Redimensión Mágica</span>
+        </div>
+        <p>Una gran idea no debería vivir en un solo formato. Aprende a tomar un diseño base y multiplicarlo en posts, stories, videos de TikTok, y hasta productos de impresión con Redimensión Mágica.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>El principio de "una idea, muchos formatos"</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Redimensión Mágica: elegir páginas y formatos de destino</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Convertir un post de Instagram en bolsa de tela (impresión física)</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Adaptar diseños para TikTok con plantillas optimizadas para móvil</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Actividad: lanzar una minicampaña a partir de un solo diseño</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80" alt="Dispositivos móviles con contenido de redes sociales" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Redimensión Mágica multicanal</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/magic-resize/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Probar Redimensión Mágica
+        </a>
+      </div>
+    </div>
+
+    <!-- Módulo 5 -->
+    <div class="module-card m5">
+      <div class="module-number">05</div>
+      <div class="module-content">
+        <h3>Planificación, publicación y trabajo en equipo</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 45 min</span>
+          <span class="meta-tag">📅 Planificador</span>
+          <span class="meta-tag">👥 Colaboración</span>
+        </div>
+        <p>El mejor contenido pierde impacto si no llega al público correcto en el momento oportuno. El Planificador de Contenido y las herramientas colaborativas de Canva Pro simplifican la coordinación de campañas complejas.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>Planificador de Contenido: vincular redes, programar y ajustar publicaciones</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Aprobaciones y asignación de tareas en flujos de equipo</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Organizar proyectos con carpetas, etiquetas y comentarios</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Canva Docs: documentos de estrategia con banners, resaltado y pizarras</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Generación de notas de presentación con IA</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Equipo colaborando frente a pantalla con calendario de contenido" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Planificador de Contenido</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/content-planner/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Abrir Planificador de Contenido
+        </a>
+      </div>
+    </div>
+
+    <!-- Módulo 6 -->
+    <div class="module-card m6">
+      <div class="module-number">06</div>
+      <div class="module-content">
+        <h3>Métricas, datos en vivo e informes de campaña</h3>
+        <div class="module-meta">
+          <span class="meta-tag">⏱ 50 min</span>
+          <span class="meta-tag">📊 Analytics</span>
+          <span class="meta-tag">🔗 Conectores de datos</span>
+        </div>
+        <p>Los datos son la clave para optimizar campañas. Canva se conecta directamente a tus fuentes de datos externas para que tus paneles e informes se actualicen solos, eliminando horas de trabajo manual cada mes.</p>
+        <ul class="lesson-list">
+          <li class="lesson-item"><span class="lesson-dot"></span>Estadísticas nativas: visitas, interacción, tiempo por página y clics</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Conectores de datos: vincular Google Sheets, Analytics y Salesforce</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Crear paneles con gráficos dinámicos que se actualizan automáticamente</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Tipos de gráficos avanzados: barras animadas, radar, mapa de árbol</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Filtros interactivos para que tu equipo explore los datos</li>
+          <li class="lesson-item"><span class="lesson-dot"></span>Actividad: armar un informe mensual de campaña reutilizable</li>
+        </ul>
+        <div class="module-preview">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Dashboard con gráficos y métricas de campaña" loading="lazy">
+          <div class="preview-overlay"><span class="preview-caption">Ejemplo: Panel de datos en tiempo real</span></div>
+        </div>
+        <a class="example-link" href="https://www.canva.com/data-visualizations/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver visualizaciones de datos en Canva
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="container" id="herramientas">
+  <div class="tools-strip">
+    <div class="section-label">Herramientas que dominarás</div>
+    <h2 class="section-title" style="font-size: 28px;">Todo el ecosistema Canva para marketing</h2>
+    <div class="tools-grid">
+      <a class="tool-pill" href="https://www.canva.com/ai-image-generator/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Canva IA ↗</span><span class="tool-type">Generación de video</span></a>
+      <a class="tool-pill" href="https://www.canva.com/video-editor/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Timeline 2.0 ↗</span><span class="tool-type">Editor de video</span></a>
+      <a class="tool-pill" href="https://www.canva.com/video-editor/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Video Mágico ↗</span><span class="tool-type">Edición con IA</span></a>
+      <a class="tool-pill" href="https://www.canva.com/video-editor/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Subtítulos ↗</span><span class="tool-type">Accesibilidad</span></a>
+      <a class="tool-pill" href="https://www.canva.com/create/email-newsletters/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Correo Canva ↗</span><span class="tool-type">Email marketing</span></a>
+      <a class="tool-pill" href="https://www.canva.com/magic-write/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Texto Mágico ↗</span><span class="tool-type">Copywriting con IA</span></a>
+      <a class="tool-pill" href="https://www.canva.com/background-remover/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Quitafondos ↗</span><span class="tool-type">Edición de imagen</span></a>
+      <a class="tool-pill" href="https://www.canva.com/magic-eraser/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Borrador Mágico ↗</span><span class="tool-type">Retoque con IA</span></a>
+      <a class="tool-pill" href="https://www.canva.com/brand/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Kit de Marca ↗</span><span class="tool-type">Brand system</span></a>
+      <a class="tool-pill" href="https://www.canva.com/magic-resize/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Redimensión Mágica ↗</span><span class="tool-type">Multicanal</span></a>
+      <a class="tool-pill" href="https://www.canva.com/content-planner/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Planificador ↗</span><span class="tool-type">Programación</span></a>
+      <a class="tool-pill" href="https://www.canva.com/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Estadísticas ↗</span><span class="tool-type">Analytics nativo</span></a>
+      <a class="tool-pill" href="https://www.canva.com/data-visualizations/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Conectores de datos ↗</span><span class="tool-type">Datos en vivo</span></a>
+      <a class="tool-pill" href="https://www.canva.com/create/documents/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Canva Docs ↗</span><span class="tool-type">Estrategia</span></a>
+      <a class="tool-pill" href="https://www.canva.com/online-whiteboard/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Pizarra Online ↗</span><span class="tool-type">Diagramas</span></a>
+      <a class="tool-pill" href="https://www.canva.com/ai-image-generator/" target="_blank" rel="noopener" style="text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px rgba(124,58,237,0.15)'" onmouseout="this.style.transform='';this.style.boxShadow=''"><span class="tool-name">Contenido Mágico ↗</span><span class="tool-type">Elementos con IA</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="container" id="metodologia">
+  <div class="section-label">Enfoque pedagógico</div>
+  <h2 class="section-title">Aprender haciendo,<br>no solo viendo</h2>
+  <p class="section-desc">Cada lección sigue un ciclo diseñado para que los conocimientos se conviertan en habilidades reales que puedas usar desde el primer día.</p>
+
+  <div class="method-grid">
+    <div class="method-step">
+      <div class="method-num">01</div>
+      <h4>Contexto y motivación</h4>
+      <p>Cada módulo comienza con un caso real de marketing que responde la pregunta: ¿por qué me importa esto?</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">02</div>
+      <h4>Demostración guiada</h4>
+      <p>El instructor recorre la herramienta paso a paso con un ejemplo completo, visible en pantalla.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">03</div>
+      <h4>Práctica con plantilla</h4>
+      <p>Cada participante trabaja sobre una plantilla de actividad diseñada para el módulo, con instrucciones embebidas.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">04</div>
+      <h4>Revisión en equipo</h4>
+      <p>Los resultados se comparten, comentan y mejoran colectivamente. El aprendizaje es social.</p>
+    </div>
+    <div class="method-step">
+      <div class="method-num">05</div>
+      <h4>Transferencia al trabajo real</h4>
+      <p>Cada módulo cierra con un reto concreto aplicado al proyecto real del participante o su empresa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section class="container" id="resultados">
+  <div class="outcomes-section">
+    <div class="section-label">Al terminar el curso</div>
+    <h2 class="section-title">Lo que serás capaz de hacer</h2>
+    <p class="section-desc">No es solo aprender Canva. Es transformar la manera en que tu equipo produce, publica y mide campañas de marketing.</p>
+    <div class="outcomes-grid">
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Crear videos de campaña profesionales con IA sin necesidad de material filmado ni equipo de producción</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Diseñar correos electrónicos HTML adaptables directamente en Canva e integrarlos con tu plataforma de envío</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Configurar un Kit de Marca completo que garantice coherencia visual en todos los canales y miembros del equipo</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Convertir un único diseño en una campaña multicanal adaptada a Instagram, TikTok, impresión y más</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Planificar y programar publicaciones en múltiples redes desde un único calendario con flujos de aprobación</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Crear paneles de datos en tiempo real conectados a Google Sheets o Analytics que se actualizan automáticamente</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Usar Canva Docs y Pizarras Online para alinear estrategia y ejecución en el mismo entorno de trabajo</p>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <p>Reducir el tiempo de producción de contenido en más de un 50% con herramientas de IA integradas</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="container" id="audiencia">
+  <div class="section-label">¿Para quién es este curso?</div>
+  <h2 class="section-title">Diseñado para profesionales<br>del marketing en acción</h2>
+  <p class="section-desc">No se requiere experiencia en diseño gráfico. Sí se requiere querer hacer mejor su trabajo.</p>
+  <div class="audience-grid">
+    <div class="audience-card">
+      <div class="audience-avatar" style="background:#EDE9FE;">📣</div>
+      <h4>Especialistas en marketing</h4>
+      <p>Que quieren producir más contenido de calidad en menos tiempo, sin depender siempre del equipo de diseño.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-avatar" style="background:#DBEAFE;">💼</div>
+      <h4>Gerentes de marca</h4>
+      <p>Que necesitan garantizar coherencia visual en todos los canales y dar autonomía a su equipo.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-avatar" style="background:#D1FAE5;">🏪</div>
+      <h4>Emprendedores y PyMEs</h4>
+      <p>Que manejan su propio marketing y buscan herramientas profesionales accesibles.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-avatar" style="background:#FCE7F3;">📱</div>
+      <h4>Gestores de redes sociales</h4>
+      <p>Que publican en múltiples plataformas y necesitan optimizar su flujo de trabajo y tiempos de publicación.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-avatar" style="background:#FEF3C7;">📊</div>
+      <h4>Analistas de campaña</h4>
+      <p>Que necesitan presentar datos de forma visual y crear informes que se actualicen solos.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 48px; text-align: center;">
+    <div class="section-label" style="text-align: center;">Próximos pasos</div>
+    <h2 class="section-title" style="max-width: 480px; margin: 0 auto 16px;">Este curso es la base.<br>Úsalo como quieras.</h2>
+    <p style="color: var(--text-secondary); max-width: 520px; margin: 0 auto 32px; font-size: 15px; line-height: 1.7;">El material de este curso está pensado para convertirse en un ebook descargable y en un taller presencial intensivo. Cada módulo es una unidad de aprendizaje independiente y modular.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <div style="background: var(--accent-light); border-radius: 12px; padding: 20px 28px; text-align: left;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--canva-purple); font-weight: 600; margin-bottom: 6px;">Siguiente fase</div>
+        <div style="font-weight: 600; font-size: 15px;">📖 Ebook descargable</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Guía de referencia en PDF</div>
+      </div>
+      <div style="background: var(--accent-light); border-radius: 12px; padding: 20px 28px; text-align: left;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--canva-purple); font-weight: 600; margin-bottom: 6px;">Siguiente fase</div>
+        <div style="font-weight: 600; font-size: 15px;">🏫 Taller presencial</div>
+        <div style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Formato intensivo de 1 día</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECURSOS BANNER -->
+<section style="background: #1A1433; padding: 60px 40px;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#A78BFA;font-weight:600;margin-bottom:12px;">Recursos gratuitos para comenzar</div>
+    <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);color:#fff;margin-bottom:40px;line-height:1.2;">Todo lo que necesitas,<br>en un solo lugar</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+      <a href="https://www.canva.com/designschool/courses/" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 24px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+        <div style="font-size:24px;margin-bottom:12px;">🎓</div>
+        <div style="font-weight:600;color:#fff;font-size:15px;margin-bottom:6px;">Canva Design School</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Todos los cursos oficiales gratuitos en español</div>
+        <div style="margin-top:14px;font-size:12px;color:#A78BFA;font-weight:600;">Ver cursos →</div>
+      </a>
+      <a href="https://www.canva.com/templates/?query=marketing" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 24px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+        <div style="font-size:24px;margin-bottom:12px;">📐</div>
+        <div style="font-weight:600;color:#fff;font-size:15px;margin-bottom:6px;">Plantillas de marketing</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Miles de plantillas gratuitas listas para usar</div>
+        <div style="margin-top:14px;font-size:12px;color:#A78BFA;font-weight:600;">Explorar plantillas →</div>
+      </a>
+      <a href="https://www.canva.com/help/" target="_blank" rel="noopener" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 24px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+        <div style="font-size:24px;margin-bottom:12px;">💡</div>
+        <div style="font-weight:600;color:#fff;font-size:15px;margin-bottom:6px;">Centro de ayuda</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5;">Tutoriales paso a paso para cada herramienta</div>
+        <div style="margin-top:14px;font-size:12px;color:#A78BFA;font-weight:600;">Ir al centro de ayuda →</div>
+      </a>
+      <a href="https://www.canva.com/pro/" target="_blank" rel="noopener" style="background:rgba(124,58,237,0.25);border:1px solid rgba(124,58,237,0.4);border-radius:16px;padding:28px 24px;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='rgba(124,58,237,0.35)'" onmouseout="this.style.background='rgba(124,58,237,0.25)'">
+        <div style="font-size:24px;margin-bottom:12px;">⭐</div>
+        <div style="font-weight:600;color:#fff;font-size:15px;margin-bottom:6px;">Canva Pro</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;">Kit de Marca, Planificador y herramientas avanzadas de IA</div>
+        <div style="margin-top:14px;font-size:12px;color:#FDE68A;font-weight:600;">Pruébalo gratis 30 días →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="course-footer">
+  <p><strong>Potenciar tus campañas de marketing con Canva</strong> · Canva Design School · Edición LATAM</p>
+  <p style="margin-top: 8px;">Basado en el material oficial del curso de Canva Design School.</p>
+</footer>
+
+</body>
+</html>
